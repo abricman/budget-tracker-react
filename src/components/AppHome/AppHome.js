@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-import AppHeader from  '../AppHeader/AppHeader';
+import AppHeader from  '../AppHeader';
 import AppNavigation from  '../AppNavigation/AppNavigation';
 import AppFooter from  '../AppFooter/AppFooter'
 

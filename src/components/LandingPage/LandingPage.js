@@ -13,21 +13,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const NewAccountLink = React.forwardRef((props, ref) => (
-    <Link innerRef={ref} to="/account/new" {...props} />
+const AccountSignUpLink = React.forwardRef((props, ref) => (
+    <Link innerRef={ref} to="/user/signup" {...props} />
 ));
 
-const AccountLoginLink = React.forwardRef((props, ref) => (
-    <Link innerRef={ref} to="/account/login" {...props} />
+const AccountSignInLink = React.forwardRef((props, ref) => (
+    <Link innerRef={ref} to="/user/signin" {...props} />
 ));
-
 
 function LandingPage() {
   const classes = useStyles();
 
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
-      <Box flexGrow="0" paddingTop={10}>
+      <Box flexGrow="0" pt={10}>
         <Typography variant="h2" component="h1" gutterBottom align="center">
           Welcome!
         </Typography>
@@ -35,11 +34,11 @@ function LandingPage() {
           {'The only budget tracker you will ever need'}
         </Typography>
       </Box>
-      <Box flexGrow="1" alignSelf="center" paddingTop={10}>
-        <Button variant="contained" color="primary" className={classes.button} component={NewAccountLink}>
-            New Account
+      <Box flexGrow="1" alignSelf="center" pt={10}>
+        <Button variant="contained" color="primary" className={classes.button} component={AccountSignUpLink}>
+            Sign up
         </Button>
-        <Button variant="contained" color="primary" className={classes.button} component={AccountLoginLink}>
+        <Button variant="contained" color="primary" className={classes.button} component={AccountSignInLink}>
             Login
         </Button>
       </Box>

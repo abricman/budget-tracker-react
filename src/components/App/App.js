@@ -1,20 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import history from '../../history';
 
 import AppHome from  '../AppHome/AppHome';
-import LoginPage from  '../LoginPage/LoginPage'
-import NewAccountPage from  '../NewAccountPage/NewAccountPage'
-import LandingPage from  '../LandingPage/LandingPage'
+import LandingPage from  '../LandingPage/LandingPage';
+import SignUpPage from  '../SignUpPage/SignUpPage'
+import SignInPage from  '../SignInPage/SignInPage'
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <Route exact path='/' component={LandingPage} />
-      <Route exact path='/account/login' component={LoginPage} />
-      <Route exact path='/account/new' component={NewAccountPage} />
+      <Route exact path='/user/signup' component={SignUpPage} />
+      <Route exact path='/user/signin' component={SignInPage} />
       <Route exact path='/home' component={AppHome} />
     </Router>
   );
 }
 
-export default App;
+export default connect(null)(App);

@@ -25,7 +25,7 @@ const useStyles = (zIndex = "auto") => {
 
 const Header = props => {
     const classes = useStyles(props.zIndex);
-    debugger;
+
     const [state, setState] = useState({
       open: false
     });

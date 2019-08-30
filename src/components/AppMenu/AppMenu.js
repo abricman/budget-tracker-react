@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -20,6 +22,10 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 2)
   }
 }));
+
+const UserSignOutLink = React.forwardRef((props, ref) => (
+  <Link innerRef={ref} to="/" {...props} />
+));
 
 export default function TemporaryDrawer({open, updateOpenState}) {
   const classes = useStyles();
@@ -50,6 +56,11 @@ export default function TemporaryDrawer({open, updateOpenState}) {
             <Typography color="textSecondary" variant="body2">
               andrej.bricman@outlook.com
             </Typography>
+          </Grid>
+          <Grid item>
+            <Button color="primary" component={UserSignOutLink}>
+                Sign out
+            </Button>
           </Grid>
         </Grid>
       </div>
