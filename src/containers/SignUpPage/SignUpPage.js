@@ -14,7 +14,7 @@ import _ from 'lodash';
 import AppFooter from '../../components/AppFooter/AppFooter';
 import SignUpForm from './SingUpForm';
 import Toast from '../../components/Toast/Toast';
-import { handleUserSignUp } from '../../store/actions';
+import { usersActions } from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -85,7 +85,7 @@ function SignUpPage(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleUserSignUp: user => dispatch(handleUserSignUp(user))
+    handleUserSignUp: user => dispatch(usersActions.handleUserSignUp(user))
   }
 }
 

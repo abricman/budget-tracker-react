@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 import AppFooter from '../../components/AppFooter/AppFooter';
 import SignInForm from './SignInForm';
 import Toast from '../../components/Toast/Toast';
-import { handleUserSignIn } from '../../store/actions';
+import { usersActions } from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -86,7 +86,7 @@ function SignInPage(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleUserSignIn: user => dispatch(handleUserSignIn(user))
+    handleUserSignIn: user => dispatch(usersActions.handleUserSignIn(user))
   }
 }
 
