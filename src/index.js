@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider, ReactReduxContext } from 'react-redux';
 
 import App from './containers/App/App'
-import configStore, {history} from './store/configStore'
+import configStore, { history } from './store/configStore'
 
-const store = configStore()
+export const store = configStore()
 
 ReactDOM.render(
     <Provider store={store}>

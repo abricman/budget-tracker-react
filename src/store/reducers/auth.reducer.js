@@ -12,7 +12,7 @@ export default (auth = INITIAL_STATE, action = {}) => {
         case userConstants.SIGN_IN: 
             return action.payload
         case userConstants.SIGN_OUT: 
-            return null
+            return action.payload
         default: 
             return auth
     }

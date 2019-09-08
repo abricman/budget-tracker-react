@@ -19,7 +19,6 @@ export const handleUserSignUp = user => async(dispatch, getState) => {
 }
 
 export const userSignIn = (token, user) => {
-    debugger
     return {
         type: userConstants.SIGN_IN,
         payload: {

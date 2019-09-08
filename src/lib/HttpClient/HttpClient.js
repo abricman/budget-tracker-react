@@ -11,50 +11,64 @@ const getClient = (baseUrl = null) => {
   
     const client = axios.create(options)
     return client
-  }
+}
   
 export class ApiClient {
-    constructor(baseUrl = null) {
+    constructor(baseUrl = null, confMiddleware = []) {
       this.client = getClient(baseUrl)
+      this.confMiddleware = confMiddleware
+    }
+
+    applyCommonConfMiddleware(conf) {
+      return this.confMiddleware.reduce(function applyMiddleware(prevConf, middleware) {
+          return middleware(prevConf)
+      }, conf)
     }
   
     get(url, conf = {}) {
+      conf = this.applyCommonConfMiddleware(conf)
       return this.client.get(url, conf)
         .then(response => Promise.resolve(response))
         .catch(error => Promise.reject(error))
     }
   
     delete(url, conf = {}) {
+      conf = this.applyCommonConfMiddleware(conf)
       return this.client.delete(url, conf)
         .then(response => Promise.resolve(response))
         .catch(error => Promise.reject(error))
     }
   
     head(url, conf = {}) {
+      conf = this.applyCommonConfMiddleware(conf)
       return this.client.head(url, conf)
         .then(response => Promise.resolve(response))
         .catch(error => Promise.reject(error))
     }
   
     options(url, conf = {}) {
+      conf = this.applyCommonConfMiddleware(conf)
       return this.client.options(url, conf)
         .then(response => Promise.resolve(response))
         .catch(error => Promise.reject(error))
     }
   
     post(url, data = {}, conf = {}) {
+      conf = this.applyCommonConfMiddleware(conf)
       return this.client.post(url, data, conf)
         .then(response => Promise.resolve(response))
         .catch(error => Promise.reject(error))
     }
   
     put(url, data = {}, conf = {}) {
+      conf = this.applyCommonConfMiddleware(conf)
       return this.client.put(url, data, conf)
         .then(response => Promise.resolve(response))
         .catch(error => Promise.reject(error))
     }
   
     patch(url, data = {}, conf = {}) {
+      conf = this.applyCommonConfMiddleware(conf)
       return this.client.patch(url, data, conf)
         .then(response => Promise.resolve(response))
         .catch(error => Promise.reject(error))
