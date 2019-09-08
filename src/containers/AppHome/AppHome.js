@@ -4,9 +4,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-import AppHeader from  '../AppHeader';
-import AppNavigation from  '../AppNavigation/AppNavigation';
-import AppFooter from  '../AppFooter/AppFooter'
+import AppHeader from  '../../components/AppHeader';
+import AppNavigation from  '../../components/AppNavigation/AppNavigation';
+import AppFooter from  '../../components/AppFooter/AppFooter'
 
 const defaultTheme = createMuiTheme();
 const AppHeaderWidth = 240;
@@ -25,13 +25,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Home = () => {
+const Home = ({ handleSignOut }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppHeader title="Budget Tracker" zIndex={defaultTheme.zIndex.drawer+1} />
+      <AppHeader title="Budget Tracker" zIndex={defaultTheme.zIndex.drawer+1} handleSignOut={handleSignOut} />
       <Container component="main" className={classes.main} maxWidth="sm">
         <AppNavigation/>
         <Typography variant="h2" component="h1" gutterBottom align="center">

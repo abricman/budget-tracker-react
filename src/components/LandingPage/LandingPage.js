@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -21,9 +23,10 @@ const AccountSignInLink = React.forwardRef((props, ref) => (
     <Link innerRef={ref} to="/user/signin" {...props} />
 ));
 
-function LandingPage() {
+function LandingPage({ auth, push }) {
   const classes = useStyles();
 
+  if (auth.user && auth.token) push('/home')
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <Box flexGrow="0" pt={10}>
@@ -49,4 +52,8 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+const mapStateToProps = ({ auth }) => {
+  return { auth }
+}
+
+export default connect(mapStateToProps, { push })(LandingPage);

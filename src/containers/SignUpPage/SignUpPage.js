@@ -11,10 +11,10 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import _ from 'lodash';
 
-import AppFooter from '../AppFooter/AppFooter';
+import AppFooter from '../../components/AppFooter/AppFooter';
 import SignUpForm from './SingUpForm';
-import Toast from '../Toast/Toast';
-import { userSignUp } from '../../actions';
+import Toast from '../../components/Toast/Toast';
+import { handleUserSignUp } from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -49,7 +49,7 @@ function SignUpPage(props) {
   const handleSubmit = async (values, formikBag) => {
     const user = _.omit(values, ['passwordConfirmation'])
     try {
-      await props.userSignUp(user);
+      await props.handleUserSignUp(user);
     } catch(e) {
       debugger;
       setToastConfig({open: true, message: e.message});
@@ -85,7 +85,7 @@ function SignUpPage(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    userSignUp: user => dispatch(userSignUp(user))
+    handleUserSignUp: user => dispatch(handleUserSignUp(user))
   }
 }
 

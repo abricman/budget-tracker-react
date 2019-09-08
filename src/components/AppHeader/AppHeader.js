@@ -23,8 +23,8 @@ const useStyles = (zIndex = "auto") => {
   }))();
 };
 
-const Header = props => {
-    const classes = useStyles(props.zIndex);
+const Header = ({ title, zIndex, handleSignOut }) => {
+    const classes = useStyles(zIndex);
 
     const [state, setState] = useState({
       open: false
@@ -40,14 +40,14 @@ const Header = props => {
 
     return (
       <>
-        <AppMenu open={state.open} updateOpenState={updateOpenState} />
+        <AppMenu open={state.open} updateOpenState={updateOpenState} handleSignOut={handleSignOut} />
         <AppBar position="static" classes={{root: classes.root}}>
             <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={onMenuClick}>
                 <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-                {props.title}
+                {title}
             </Typography>
             </Toolbar>
         </AppBar>

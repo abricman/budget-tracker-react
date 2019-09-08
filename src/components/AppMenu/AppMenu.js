@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
@@ -23,11 +23,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UserSignOutLink = React.forwardRef((props, ref) => (
+/* const UserSignOutLink = React.forwardRef((props, ref) => (
   <Link innerRef={ref} to="/" {...props} />
-));
+)); */
 
-export default function TemporaryDrawer({open, updateOpenState}) {
+export default function TemporaryDrawer({open, updateOpenState, handleSignOut}) {
   const classes = useStyles();
 
   const toggleDrawer = (open) => event => {
@@ -58,7 +58,11 @@ export default function TemporaryDrawer({open, updateOpenState}) {
             </Typography>
           </Grid>
           <Grid item>
-            <Button color="primary" component={UserSignOutLink}>
+            {/* <Button color="primary" style={{marginTop:"1rem"}} component={UserSignOutLink}>
+                Sign out
+            </Button> */}
+            <Link to="/" />
+            <Button color="primary" style={{marginTop:"1rem"}} onClick={handleSignOut}>
                 Sign out
             </Button>
           </Grid>
@@ -66,10 +70,10 @@ export default function TemporaryDrawer({open, updateOpenState}) {
       </div>
       <Divider />
       <List>
-        <ListItem button key="My Account">
+        {/* <ListItem button key="My Account">
           <ListItemIcon><AccountBoxIcon /></ListItemIcon>
           <ListItemText primary="My Account" secondary="" />
-        </ListItem>
+        </ListItem> */}
         <ListItem button key="My Wallets">
           <ListItemIcon><AccountBalanceWalletIcon /></ListItemIcon>
           <ListItemText primary="My Wallets" />

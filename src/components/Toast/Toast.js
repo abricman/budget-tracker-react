@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -77,7 +77,12 @@ SnackbarContentWrapper.propTypes = {
   variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
-export default function CustomSnackbar({variant='error', message, anchorOrigin = {vertical:'bottom', horizontal:'left'}, autoHideDuration=6000, open=false}) {
+const defaultAnchorOrigin = {
+  vertical:'bottom', 
+  horizontal:'left'
+}
+
+export default function CustomSnackbar({variant='error', message, anchorOrigin = defaultAnchorOrigin, autoHideDuration=6000, open=false}) {
   const [openState, setOpenState] = React.useState(open);
 
   function handleClose(event, reason) {

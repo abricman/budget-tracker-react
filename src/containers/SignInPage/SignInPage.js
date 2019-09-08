@@ -10,10 +10,10 @@ import Container from '@material-ui/core/Container';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import AppFooter from '../AppFooter/AppFooter';
+import AppFooter from '../../components/AppFooter/AppFooter';
 import SignInForm from './SignInForm';
-import Toast from '../Toast/Toast';
-import { userSignIn } from '../../actions';
+import Toast from '../../components/Toast/Toast';
+import { handleUserSignIn } from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -52,7 +52,7 @@ function SignInPage(props) {
 
   const handleSubmit = async (values, formikBag) => {
     try {
-      await props.userSignIn(values);
+      await props.handleUserSignIn(values);
     } catch(e) {
       setToastConfig({open: true, message: e.message});
     }
@@ -86,7 +86,7 @@ function SignInPage(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    userSignIn: user => dispatch(userSignIn(user))
+    handleUserSignIn: user => dispatch(handleUserSignIn(user))
   }
 }
 

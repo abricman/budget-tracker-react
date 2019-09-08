@@ -61,10 +61,10 @@ export default function SingInForm(props) {
             onChange={handleChange}
             value={password}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-            />
+            /> */}
             <Button
             type="submit"
             fullWidth
