@@ -11,9 +11,9 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import _ from 'lodash';
 
-import AppFooter from '../../components/AppFooter/AppFooter';
+import AppFooter from '../../components/AppFooter';
 import SignUpForm from './SingUpForm';
-import Toast from '../../components/Toast/Toast';
+import Toast from '../../components/Toast';
 import { usersActions } from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({

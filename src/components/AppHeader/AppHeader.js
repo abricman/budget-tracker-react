@@ -21,7 +21,7 @@ const useStyles = (zIndex = "auto") => {
   }))();
 };
 
-const Header = ({ title, zIndex, open, updateOpenState, handleMenuClick, handleSignOut, renderAppMenu }) => {
+const Header = ({ title, zIndex, open, updateOpenState, handleMenuClick, handleSignOut, renderAppMenu, renderHeader }) => {
     const classes = useStyles(zIndex);
 
     return (
@@ -29,12 +29,15 @@ const Header = ({ title, zIndex, open, updateOpenState, handleMenuClick, handleS
         {renderAppMenu(open, updateOpenState, handleSignOut)}
         <AppBar position="static" classes={{root: classes.root}}>
             <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleMenuClick}>
-                <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-                {title}
-            </Typography>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleMenuClick}>
+                  <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" className={classes.title} style={{flexGrow:0}}>
+                  {title}
+              </Typography>
+              <div>
+                {renderHeader()}
+              </div>
             </Toolbar>
         </AppBar>
      </>

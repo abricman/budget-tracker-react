@@ -10,9 +10,9 @@ import Container from '@material-ui/core/Container';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import AppFooter from '../../components/AppFooter/AppFooter';
+import AppFooter from '../../components/AppFooter';
 import SignInForm from './SignInForm';
-import Toast from '../../components/Toast/Toast';
+import Toast from '../../components/Toast';
 import { usersActions } from '../../store/actions';
 
 const useStyles = makeStyles(theme => ({

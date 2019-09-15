@@ -7,26 +7,26 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import AppFooter from '../AppFooter/AppFooter';
+import AppFooter from '../AppFooter';
 
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
   }
-}));
+}))
 
 const AccountSignUpLink = React.forwardRef((props, ref) => (
     <Link innerRef={ref} to="/user/signup" {...props} />
-));
+))
 
 const AccountSignInLink = React.forwardRef((props, ref) => (
     <Link innerRef={ref} to="/user/signin" {...props} />
-));
+))
 
-function LandingPage({ auth, push }) {
-  const classes = useStyles();
+function LandingPage({ auth, navigateToAppHome }) {
+  const classes = useStyles()
 
-  if (auth.user && auth.token) push('/home')
+  if (auth.user && auth.token) navigateToAppHome()
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <Box flexGrow="0" pt={10}>
@@ -56,4 +56,10 @@ const mapStateToProps = ({ auth }) => {
   return { auth }
 }
 
-export default connect(mapStateToProps, { push })(LandingPage);
+const mapDispatchToProps = dispatch => {
+  return { 
+    navigateToAppHome: () => dispatch(push('/home')) 
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage)

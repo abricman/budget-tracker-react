@@ -3,11 +3,12 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 
-import AppHome from  '../AppHome/AppHome';
-import LandingPage from  '../../components/LandingPage/LandingPage'
-import SignUpPage from  '../SignUpPage/SignUpPage'
-import SignInPage from  '../SignInPage/SignInPage'
-import PageNotFound from  '../../components/PageNotFound/PageNotFound'
+import LandingPage from  '../../components/LandingPage'
+import SignUpPage from  '../SignUpPage'
+import SignInPage from  '../SignInPage'
+import PageNotFound from  '../../components/PageNotFound'
+import AppTransactions from '../../components/AppTransactions'
+import HelpPage from '../../components/HelpPage'
 
 function App({history, context}) {
   return (
@@ -16,7 +17,8 @@ function App({history, context}) {
         <Route exact path='/' component={LandingPage} />
         <Route exact path='/user/signup' component={SignUpPage} />
         <Route exact path='/user/signin' component={SignInPage} />
-        <Route exact path='/home' component={AppHome} />
+        <Route exact path='/home' component={AppTransactions} />
+        <Route exact path='/help' component={HelpPage} />
         <Route component={PageNotFound} />  
       </Switch>
     </ConnectedRouter>

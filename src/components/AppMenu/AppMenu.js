@@ -11,7 +11,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import CategoryIcon from '@material-ui/icons/Category';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -22,10 +21,6 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 2)
   }
 }));
-
-/* const UserSignOutLink = React.forwardRef((props, ref) => (
-  <Link innerRef={ref} to="/" {...props} />
-)); */
 
 export default function TemporaryDrawer({open, updateOpenState, handleSignOut}) {
   const classes = useStyles();
@@ -58,9 +53,6 @@ export default function TemporaryDrawer({open, updateOpenState, handleSignOut}) 
             </Typography>
           </Grid>
           <Grid item>
-            {/* <Button color="primary" style={{marginTop:"1rem"}} component={UserSignOutLink}>
-                Sign out
-            </Button> */}
             <Link to="/" />
             <Button color="primary" style={{marginTop:"1rem"}} onClick={handleSignOut}>
                 Sign out
@@ -70,17 +62,13 @@ export default function TemporaryDrawer({open, updateOpenState, handleSignOut}) 
       </div>
       <Divider />
       <List>
-        {/* <ListItem button key="My Account">
-          <ListItemIcon><AccountBoxIcon /></ListItemIcon>
-          <ListItemText primary="My Account" secondary="" />
-        </ListItem> */}
         <ListItem button key="My Wallets">
           <ListItemIcon><AccountBalanceWalletIcon /></ListItemIcon>
           <ListItemText primary="My Wallets" />
         </ListItem>
         <ListItem button key="Categories">
           <ListItemIcon><CategoryIcon /></ListItemIcon>
-          <ListItemText primary="Categories" />
+          <ListItemText primary="Categories"/>
         </ListItem>
       </List>
     </div>
