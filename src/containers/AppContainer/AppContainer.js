@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
@@ -18,24 +18,25 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-  },
+    backgroundColor: '#e7e7e7'
+  }/* ,
   main: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     justifyContent: "center",
     flexGrow: 1,
     marginLeft: AppHeaderWidth,
-  }
+  } */
 }));
 
 const AppContainer = ({auth, handleUserSignOut, renderHeader, renderMain, navigateToSignInPage}) => {
-  if (!auth.user || !auth.token) navigateToSignInPage();
+  /* if (!auth.user || !auth.token) navigateToSignInPage(); */
 
   const classes = useStyles();
   const [state, setState] = useState({ menuOpen: false })
   const handleMenuClick = () => setState({menuOpen: !state.menuOpen})
-  const handleSignOut = () => handleUserSignOut(auth.user)
   const updateOpenState = (menuOpen) => setState({menuOpen})
+  const handleSignOut = () => handleUserSignOut(auth.user)
 
   return (
     <div className={classes.root}>
@@ -53,9 +54,9 @@ const AppContainer = ({auth, handleUserSignOut, renderHeader, renderMain, naviga
         renderHeader={renderHeader}
       />
       <AppNavigation/>
-      <Grid container>
+      <Grid container style={{flex:1}}>
         <Grid item style={{width:"240px"}}></Grid>
-        <Grid item style={{flexGrow:"1", padding:"0.5rem"}}>
+        <Grid item style={{flexGrow:"1"}}>
           {renderMain()}
         </Grid>
       </Grid>

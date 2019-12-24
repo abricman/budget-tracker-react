@@ -18,6 +18,9 @@ const useStyles = (zIndex = "auto") => {
     title: {
       flexGrow: 1,
     },
+    contentContainer: {
+      flexGrow: 1
+    }
   }))();
 };
 
@@ -27,7 +30,7 @@ const Header = ({ title, zIndex, open, updateOpenState, handleMenuClick, handleS
     return (
       <>
         {renderAppMenu(open, updateOpenState, handleSignOut)}
-        <AppBar position="static" classes={{root: classes.root}}>
+        <AppBar position="sticky" classes={{root: classes.root}}>
             <Toolbar>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleMenuClick}>
                   <MenuIcon />
@@ -35,7 +38,7 @@ const Header = ({ title, zIndex, open, updateOpenState, handleMenuClick, handleS
               <Typography variant="h6" className={classes.title} style={{flexGrow:0}}>
                   {title}
               </Typography>
-              <div>
+              <div className={classes.contentContainer}>
                 {renderHeader()}
               </div>
             </Toolbar>

@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 import _ from 'lodash';
 
 import AppFooter from '../../components/AppFooter';
-import SignUpForm from './SingUpForm';
+import SignUpForm from './SignUpForm';
 import Toast from '../../components/Toast';
 import { usersActions } from '../../store/actions';
 
@@ -51,7 +51,6 @@ function SignUpPage(props) {
     try {
       await props.handleUserSignUp(user);
     } catch(e) {
-      debugger;
       setToastConfig({open: true, message: e.message});
     }
   }

@@ -66,10 +66,10 @@ export default function TemporaryDrawer({open, updateOpenState, handleSignOut}) 
           <ListItemIcon><AccountBalanceWalletIcon /></ListItemIcon>
           <ListItemText primary="My Wallets" />
         </ListItem>
-        <ListItem button key="Categories">
+        {/* <ListItem button key="Categories">
           <ListItemIcon><CategoryIcon /></ListItemIcon>
           <ListItemText primary="Categories"/>
-        </ListItem>
+        </ListItem> */}
       </List>
     </div>
   );
