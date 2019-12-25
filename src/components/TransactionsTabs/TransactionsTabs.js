@@ -17,7 +17,7 @@ export default function TransactionsTabs({ model, changeMonth }) {
 
     const selectedValue = model ? model.summary.tabsConfig.value: null;
     const tabs = model ? (model.summary.tabsConfig.tabs.map(({label, value}) => <Tab label={label} value={value} />)) : []
-
+debugger
     return (
         <Paper className={classes.root}>
             <Tabs

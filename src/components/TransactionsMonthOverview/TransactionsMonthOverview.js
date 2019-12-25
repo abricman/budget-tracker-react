@@ -3,8 +3,8 @@ import TransactionGroup from '../TransactionGroup'
 import TransactionsSummary from '../TransactionsSummary'
 
 export default function TransactionsMonthOverview({model}) {
-    const groups = []
-    if (model && model.transactionGroups) model.transactionGroups.map((group) => <TransactionGroup item={group}/>)
+    let groups = []
+    if (model && model.transactionGroups) groups = model.transactionGroups.map((group) => <TransactionGroup item={group}/>)
     
     return (
         !model ? null :
