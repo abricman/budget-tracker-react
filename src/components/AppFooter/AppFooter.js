@@ -1,6 +1,6 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 
 import Copyright from '../Copyright';
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function AppFooter() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <footer className={classes.footer}>

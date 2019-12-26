@@ -1,10 +1,10 @@
 import { push } from 'connected-react-router'
-import { transactionConstants } from '../../constants'
+import { transactionsActionTypes } from '../../constants'
 import { transactionsService } from '../../services'
 
 export const transactionAdd = (transaction) => {
     return {
-        type: transactionConstants.ADD,
+        type: transactionsActionTypes.ADD,
         payload: {
             transaction
         }
@@ -19,7 +19,7 @@ export const handleTransactionAdd = transaction => async(dispatch, getState) => 
 }
 
 export const handleGetTransactions = (year, month) => async (dispatch, getState) => {
-    dispatch({ type: transactionConstants.REQUEST_GET_TRANSACTIONS })
+    dispatch({ type: transactionsActionTypes.REQUEST_GET_TRANSACTIONS })
     const result = await transactionsService.getTransactions(year, month)
-    dispatch({ type: transactionConstants.REQUEST_GET_TRANSACTIONS_FINISHED, payload: result, error: result.error })
+    dispatch({ type: transactionsActionTypes.REQUEST_GET_TRANSACTIONS_FINISHED, payload: result, error: result.error })
 }

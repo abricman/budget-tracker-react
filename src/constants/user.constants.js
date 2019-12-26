@@ -1,4 +1,4 @@
-export const userConstants = {
+export const userActionsTypes = {
     SIGN_UP : 'SIGN_UP',
     SIGN_IN : 'SIGN_IN',
     SIGN_OUT : 'SIGN_OUT'

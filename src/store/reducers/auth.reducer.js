@@ -1,4 +1,4 @@
-import { userConstants } from '../../constants'
+import { userActionsTypes } from '../../constants'
 
 /* const INITIAL_STATE = {
     token: null,
@@ -15,11 +15,11 @@ const INITIAL_STATE = {
 
 export default (auth = INITIAL_STATE, action = {}) => {
     switch (action.type) {
-        case userConstants.SIGN_UP: 
+        case userActionsTypes.SIGN_UP: 
             return action.payload
-        case userConstants.SIGN_IN: 
+        case userActionsTypes.SIGN_IN: 
             return action.payload
-        case userConstants.SIGN_OUT: 
+        case userActionsTypes.SIGN_OUT: 
             return action.payload
         default: 
             return auth

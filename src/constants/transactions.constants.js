@@ -1,4 +1,4 @@
-export const transactionConstants = {
+export const transactionsActionTypes = {
     ADD : 'ADD',
     UPDATE : 'UPDATE',
     DELETE: 'DELETE',

@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function TransactionAddDialog({ open, setOpen, handleSubmit }) {
+export default function TransactionAddDialog({ open, setOpen, handleSubmit, categories, wallets }) {
   const classes = useStyles()
   const handleClose = () => {
     setOpen(false)
@@ -48,7 +48,7 @@ export default function TransactionAddDialog({ open, setOpen, handleSubmit }) {
             <form className={classes.form} noValidate onSubmit={props.handleSubmit}>
                 <DialogTitle id="form-dialog-title">Add transaction</DialogTitle>
                 <DialogContent>
-                    <TransactionAddForm {...props} />     
+                    <TransactionAddForm {...props} categories={categories} wallets={wallets} />     
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">

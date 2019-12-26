@@ -33,10 +33,19 @@ export default function AddTransactionForm(props) {
     touched,
     handleSubmit,
     handleChange,
-    isValid
+    isValid,
+    categories,
+    wallets
   } = props
 
-  const categories = [
+  const getPicklistOptions = (records) => {
+    debugger
+    return records ? records.map((rec) => { 
+      return { name: rec.name, value: rec._id } 
+    }) : []
+  } 
+
+  /* const categories = [
     {name: 'Utilities', value: 1},
     {name: 'Phone', value: 2}
   ]
@@ -44,7 +53,7 @@ export default function AddTransactionForm(props) {
   const wallets = [
     {name: 'Bank account', value: 1},
     {name: 'N26', value: 2}
-  ]
+  ] */
 
   return (
     <>
@@ -52,10 +61,10 @@ export default function AddTransactionForm(props) {
       {/* <form className={classes.form} noValidate onSubmit={handleSubmit}> */}
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <Field name="wallet" label="Wallet" id="wallet" options={wallets} required component={SelectField} />
+            <Field name="wallet" label="Wallet" id="wallet" options={getPicklistOptions(wallets)} required component={SelectField} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Field name="category" label="Category" id="category" options={categories} required component={SelectField} />
+            <Field name="category" label="Category" id="category" options={getPicklistOptions(categories)} required component={SelectField} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Field name="date" label="Date" inputVariant="outlined" required component={DatePickerField} />

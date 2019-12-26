@@ -5,12 +5,12 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import moment from 'moment'
 
-import AppContainer from '../../containers/AppContainer'
-import TransactionsTabs from '../TransactionsTabs'
-import TransactionAddDialog from '../TransactionAddDialog'
-import Spinner from '../Spinner'
-import { transactionsActions } from '../../store/actions';
-import { transactionConstants } from '../../constants'
+import AppContainer from '../AppContainer'
+import TransactionsTabs from '../../components/TransactionsTabs'
+import TransactionAddDialog from '../../components/TransactionAddDialog'
+import Spinner from '../../components/Spinner'
+import { transactionsActions, categoriesActions, walletsActions } from '../../store/actions';
+import { transactionsActionTypes } from '../../constants'
 import { selectRequesting } from '../../selectors/requesting.selector'
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, isRequesting, transactionsModel }) => {
+const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, handleGetCategories, handleGetWallets, isRequesting, transactionsModel, wallets, categories }) => {
     const classes = useStyles()
     const [openAddDialog, setOpenAddDialog] = useState(false)
     const [currentDate, setCurrentDate] = useState(new moment())
@@ -31,6 +31,8 @@ const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, isReques
     }
     useEffect(() => {
         getTransactionData()
+        handleGetCategories()
+        handleGetWallets()
     }, [])
     // TODO
     // 1. Load all transactions, categories, and wallets => dispatch actions alltogether
@@ -67,7 +69,13 @@ const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, isReques
                         <Button variant="contained" onClick={openAddTransaction}>
                             Add transaction
                         </Button>
-                        <TransactionAddDialog open={openAddDialog} setOpen={setOpenAddDialog} handleSubmit={handleSubmit}/>
+                        <TransactionAddDialog 
+                            open={openAddDialog} 
+                            setOpen={setOpenAddDialog} 
+                            handleSubmit={handleSubmit}
+                            categories={categories}
+                            wallets={wallets}
+                        />
                     </Grid>
                 </Grid>
             )}
@@ -81,15 +89,19 @@ const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, isReques
 
 const mapStateToProps = (state) => {
     return { 
-        isRequesting: selectRequesting(state, [transactionConstants.REQUEST_GET_TRANSACTIONS]),
-        transactionsModel: state.transactionsModel
+        isRequesting: selectRequesting(state, [transactionsActionTypes.REQUEST_GET_TRANSACTIONS]),
+        transactionsModel: state.transactionsModel,
+        categories: state.categories,
+        wallets: state.wallets
     }
 }
   
 const mapDispatchToProps = (dispatch) => {
     return {
         handleTransactionAdd: transaction => dispatch(transactionsActions.handleTransactionAdd(transaction)),
-        handleGetTransactions: (year, month) => dispatch(transactionsActions.handleGetTransactions(year, month))
+        handleGetTransactions: (year, month) => dispatch(transactionsActions.handleGetTransactions(year, month)),
+        handleGetCategories: () => dispatch(categoriesActions.handleGetCategories()),
+        handleGetWallets: () => dispatch(walletsActions.handleGetWallets())
     }
 }
 

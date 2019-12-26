@@ -1,10 +1,10 @@
 import { push } from 'connected-react-router'
-import { userConstants } from '../../constants'
+import { userActionsTypes } from '../../constants'
 import { usersService } from '../../services'
 
 export const userSignUp = (token, user) => {
     return {
-        type: userConstants.SIGN_UP,
+        type: userActionsTypes.SIGN_UP,
         payload: {
             token,
             user
@@ -20,7 +20,7 @@ export const handleUserSignUp = user => async(dispatch, getState) => {
 
 export const userSignIn = (token, user) => {
     return {
-        type: userConstants.SIGN_IN,
+        type: userActionsTypes.SIGN_IN,
         payload: {
             token,
             user
@@ -36,7 +36,7 @@ export const handleUserSignIn = user => async(dispatch, getState) => {
 
 export const userSignOut = () => {
     return {
-        type: userConstants.SIGN_OUT,
+        type: userActionsTypes.SIGN_OUT,
         payload: {
             token: null,
             user: null
