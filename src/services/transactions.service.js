@@ -17,6 +17,18 @@ export const getTransactions = async ( year, month) => {
     })
     // TODO: Abstract the promise construct
 }
-export const transactionAdd = transaction => transactionsClient.post('/', transaction)
+
+export const transactionAdd = async (transaction) => {
+    return new Promise((resolve, reject) => {
+        transactionsClient.post('/', transaction).then(res => {
+            resolve(res.data)
+        }).catch(res => {
+            console.log(res)
+            resolve({ error: true, errorMessage: res.response.data })
+        })
+    })
+    // TODO: Abstract the promise construct
+}
+
 export const transactionUpdate = transaction => transactionsClient.patch('/', transaction)
 export const transactionDelete = transaction => transactionsClient.delete('/', transaction)

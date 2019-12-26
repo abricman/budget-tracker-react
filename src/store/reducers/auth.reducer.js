@@ -7,6 +7,7 @@ import { userActionsTypes } from '../../constants'
 const INITIAL_STATE = {
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGJjMjc4YTBhMWFhZTFkYjg1ZTcxNTYiLCJpYXQiOjE1NzI2MTIxOTR9.0L9-o0ygxU7ltBXQOW3DE2sMp6IkKQAY4NXl2J7vIP0',
     user: {
+        _id: "5dbc278a0a1aae1db85e7156",
         firstName: "Andrej",
         lastName: "Bricman",
         email: "bricman15@hotmail.com"

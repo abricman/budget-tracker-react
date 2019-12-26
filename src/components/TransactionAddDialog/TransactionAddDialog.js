@@ -46,7 +46,7 @@ export default function TransactionAddDialog({ open, setOpen, handleSubmit, cate
       <Formik 
           render={props => (
             <form className={classes.form} noValidate onSubmit={props.handleSubmit}>
-                <DialogTitle id="form-dialog-title">Add transaction</DialogTitle>
+                <DialogTitle id="form-dialog-title">New transaction</DialogTitle>
                 <DialogContent>
                     <TransactionAddForm {...props} categories={categories} wallets={wallets} />     
                 </DialogContent>

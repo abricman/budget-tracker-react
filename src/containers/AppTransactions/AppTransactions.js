@@ -27,8 +27,9 @@ const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, handleGe
     const openAddTransaction = () => setOpenAddDialog(true)
 
     const getTransactionData = async () => {
-        handleGetTransactions(currentDate.year(), currentDate.month()) // TODO: Remove fake parameter
+        handleGetTransactions(currentDate.year(), currentDate.month())
     }
+
     useEffect(() => {
         getTransactionData()
         handleGetCategories()
@@ -40,8 +41,14 @@ const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, handleGe
     // 3. If error show some toast (existing toast component)
     // 4. Handle redux action errors
 
-    const handleSubmit = (values, formikBag) => {
-        handleTransactionAdd(values)
+    const handleSubmit = async (values, formikBag) => {
+        handleTransactionAdd(values).then(addResult => {
+            if (!addResult.error) {
+                setOpenAddDialog(false)
+                getTransactionData()
+            }
+            // TODO: show error in global Toast provider
+        })
     }
 
     const changeMonth = (event, tabValue) => {

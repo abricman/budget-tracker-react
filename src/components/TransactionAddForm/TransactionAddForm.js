@@ -39,21 +39,10 @@ export default function AddTransactionForm(props) {
   } = props
 
   const getPicklistOptions = (records) => {
-    debugger
     return records ? records.map((rec) => { 
       return { name: rec.name, value: rec._id } 
     }) : []
   } 
-
-  /* const categories = [
-    {name: 'Utilities', value: 1},
-    {name: 'Phone', value: 2}
-  ]
-
-  const wallets = [
-    {name: 'Bank account', value: 1},
-    {name: 'N26', value: 2}
-  ] */
 
   return (
     <>

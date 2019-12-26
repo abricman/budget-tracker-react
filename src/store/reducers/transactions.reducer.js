@@ -8,10 +8,6 @@ export default (transactions = INITIAL_STATE, action = {}) => {
     switch (action.type) {
         case transactionsActionTypes.REQUEST_GET_TRANSACTIONS_FINISHED: 
             return action.payload
-        case transactionsActionTypes.ADD: 
-            return action.payload
-        case transactionsActionTypes.DELETE:
-            return action.payload
         default: 
             return transactions
     }
