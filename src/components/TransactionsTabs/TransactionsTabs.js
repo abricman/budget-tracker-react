@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 export default function TransactionsTabs({ model, changeMonth }) {
     const classes = useStyles()
     const selectedValue = model ? model.summary.tabsConfig.value: null;
-    const tabs = model ? (model.summary.tabsConfig.tabs.map(({label, value}) => <Tab label={label} value={value} />)) : []
+    const tabs = model ? (model.summary.tabsConfig.tabs.map(({label, value}) => <Tab label={label} value={value} key={value}/>)) : []
 
     return (
         <Paper className={classes.root}>

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +23,7 @@ export default function SimpleSelect({ field, form, id, label, required = true, 
   }, []);
 
   return (
-    <FormControl variant="outlined" required={required} className={classes.formControl}>
+    <FormControl variant="outlined" required={required} className={classes.formControl} error={Boolean(form.errors[field.name])}>
         <InputLabel ref={inputLabel} htmlFor={field.name}>
           {label}
         </InputLabel>
@@ -42,6 +43,7 @@ export default function SimpleSelect({ field, form, id, label, required = true, 
             return <MenuItem value={opt.value}>{opt.name}</MenuItem>
           })}
         </Select>
+        <FormHelperText>{form.errors[field.name]}</FormHelperText>
     </FormControl>
   );
 }

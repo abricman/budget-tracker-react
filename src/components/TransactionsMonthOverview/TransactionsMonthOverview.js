@@ -4,7 +4,7 @@ import TransactionsSummary from '../TransactionsSummary'
 
 export default function TransactionsMonthOverview({model}) {
     let groups = []
-    if (model && model.transactionGroups) groups = model.transactionGroups.map((group) => <TransactionGroup item={group}/>)
+    if (model && model.transactionGroups) groups = model.transactionGroups.map((group) => <TransactionGroup item={group} key={group.day}/>)
     
     return (
         !model ? null :

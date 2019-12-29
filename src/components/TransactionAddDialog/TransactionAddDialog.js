@@ -1,12 +1,10 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import { Formik, Form, Field } from "formik"
+import { Formik } from "formik"
 import * as Yup from 'yup'
 import _ from 'lodash'
 
@@ -15,12 +13,12 @@ import { makeStyles } from '@material-ui/core/styles'
 import TransactionAddForm from '../TransactionAddForm'
 
 const validationSchema = Yup.object().shape({
-    wallet: Yup.string('Select a wallet').required('Wallet is required'),
-    category: Yup.string('Select a category').required('Category is required'),
-    /* date: Yup.string('Enter a date').required('Date is required'), */
-    amount: Yup.number('Enter an amount').positive('You must enter a positive number').required('Amount is required')
+    wallet: Yup.string().required('Wallet is required'),
+    category: Yup.string().required('Category is required'),
+    date: Yup.date().nullable().default(null).required('Date is required'),
+    amount: Yup.number().positive('You must enter a positive number').required('Amount is required')
 })
-// TODO: Validation
+
 const useStyles = makeStyles(theme => ({
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -61,7 +59,7 @@ export default function TransactionAddDialog({ open, setOpen, handleSubmit, cate
               </form>
           )} 
           initialValues={{date:new Date()}}
-          /* validationSchema={validationSchema} */
+          validationSchema={validationSchema}
           onSubmit={handleSubmit}
       />
     </Dialog>

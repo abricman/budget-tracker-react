@@ -63,7 +63,7 @@ export default function TransactionGroup({item}) {
             <Divider/>
             {transactions.map((tx) => {
                 return (
-                <Grid item>
+                <Grid item key={tx._id}>
                     <Grid container className={classes.defaultPadding}>
                         <Grid item xs={2}>   
                             {tx.category.iconName ? <FontAwesomeIcon icon={tx.category.iconName} size="2x" /> : null}

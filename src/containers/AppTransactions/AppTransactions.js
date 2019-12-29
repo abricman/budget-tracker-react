@@ -61,7 +61,7 @@ const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, handleGe
     const MainContent = () => {
         return (
             <Grid container alignContent="center" alignItems="center" justify="center">
-                <Grid item xs="6" classes={{root: classes.containerRoot}}>
+                <Grid item xs={6} classes={{root: classes.containerRoot}}>
                     <TransactionsTabs model={transactionsModel} changeMonth={changeMonth}/>
                 </Grid>
             </Grid>
