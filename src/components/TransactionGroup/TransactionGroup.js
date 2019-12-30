@@ -66,7 +66,7 @@ export default function TransactionGroup({item}) {
                 <Grid item key={tx._id}>
                     <Grid container className={classes.defaultPadding}>
                         <Grid item xs={2}>   
-                            {tx.category.iconName ? <FontAwesomeIcon icon={tx.category.iconName} size="2x" /> : null}
+                            {tx.category.faIcon ? <FontAwesomeIcon icon={tx.category.faIcon.icon} size="2x" color={tx.category.faIcon.color} /> : null}
                         </Grid> 
                         <Grid item xs={10}>
                             <Grid container justify="space-between">

@@ -8,8 +8,8 @@ import SignUpPage from  '../SignUpPage'
 import SignInPage from  '../SignInPage'
 import PageNotFound from  '../../components/PageNotFound'
 import AppTransactions from '../AppTransactions'
-import HelpPage from '../../components/HelpPage'
-import CategoryIconsLibrary from '../../lib/CategoryIconsLibrary'
+import AboutPage from '../../components/AboutPage'
+import FontAwesomeIconLibrary from '../../lib/FontAwesomeIconLibrary'
 
 function App({history, context}) {
   return (
@@ -20,7 +20,7 @@ function App({history, context}) {
           <Route exact path='/user/signup' component={SignUpPage} />
           <Route exact path='/user/signin' component={SignInPage} />
           <Route exact path='/home' component={AppTransactions} />
-          <Route exact path='/help' component={HelpPage} />
+          <Route exact path='/about' component={AboutPage} />
           <Route component={PageNotFound} />  
         </Switch>
       </ConnectedRouter>

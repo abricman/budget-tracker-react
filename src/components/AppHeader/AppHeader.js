@@ -39,7 +39,7 @@ const Header = ({ title, zIndex, open, updateOpenState, handleMenuClick, handleS
                   {title}
               </Typography>
               <div className={classes.contentContainer}>
-                {renderHeader()}
+                {renderHeader ? renderHeader() : null}
               </div>
             </Toolbar>
         </AppBar>

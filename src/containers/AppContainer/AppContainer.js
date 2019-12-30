@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   } */
 }));
 
-const AppContainer = ({auth, handleUserSignOut, renderHeader, renderMain, navigateToSignInPage}) => {
+const AppContainer = ({auth, handleUserSignOut, renderHeader, renderMain, navigateToSignInPage, handleNavigation}) => {
   /* if (!auth.user || !auth.token) navigateToSignInPage(); */
 
   const classes = useStyles();
@@ -41,7 +41,7 @@ const AppContainer = ({auth, handleUserSignOut, renderHeader, renderMain, naviga
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppHeader 
+      <AppHeader
         title="Budget Tracker" 
         zIndex={defaultTheme.zIndex.drawer+1}
         open={state.menuOpen}
@@ -53,7 +53,7 @@ const AppContainer = ({auth, handleUserSignOut, renderHeader, renderMain, naviga
         )}
         renderHeader={renderHeader}
       />
-      <AppNavigation/>
+      <AppNavigation handleNavigation={handleNavigation}/>
       <Grid container style={{flex:1}}>
         <Grid item style={{width:"240px"}}></Grid>
         <Grid item style={{flexGrow:"1"}}>
@@ -72,7 +72,8 @@ const mapStateToProps = ({auth}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleUserSignOut: user => dispatch(usersActions.handleUserSignOut(user)),
-    navigateToSignInPage: () => dispatch(push('/user/signin'))
+    navigateToSignInPage: () => dispatch(push('/user/signin')),
+    handleNavigation: (url) => () => dispatch(push(url))
   }
 }
 

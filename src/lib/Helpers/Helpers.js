@@ -1,0 +1,1 @@
+export const navigateToURL = (url) => () => window.location.href = url 

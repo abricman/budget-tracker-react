@@ -1,18 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import HelpIcon from '@material-ui/icons/Help';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
-import ShowChartIcon from '@material-ui/icons/ShowChart';
+import { makeStyles } from '@material-ui/core/styles'
+import Drawer from '@material-ui/core/Drawer'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Divider from '@material-ui/core/Divider'
+import InfoIcon from '@material-ui/icons/Info'
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet'
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
+import ShowChartIcon from '@material-ui/icons/ShowChart'
 
-const drawerWidth = 240;
+import { push } from 'connected-react-router'
+
+const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,10 +35,10 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
   },
   toolbar: theme.mixins.toolbar,
-}));
+}))
 
-const AppNavigation = () => {
-    const classes = useStyles();
+const AppNavigation = ({ handleNavigation}) => {
+    const classes = useStyles()
 
     return (
         <Drawer
@@ -50,7 +52,7 @@ const AppNavigation = () => {
             <List>
                 <ListItem button key="Transactions">
                     <ListItemIcon><AccountBalanceWalletIcon /></ListItemIcon>
-                    <ListItemText primary="Transactions" />
+                    <ListItemText primary="Transactions" onClick={handleNavigation('/home')}/>
                 </ListItem>
                 <ListItem button key="Report">
                     <ListItemIcon><ShowChartIcon /></ListItemIcon>
@@ -65,13 +67,13 @@ const AppNavigation = () => {
             <Divider />
 
             <List>
-                <ListItem button key="Help">
-                    <ListItemIcon><HelpIcon /></ListItemIcon>
-                    <ListItemText primary="Help" />
+                <ListItem button key="About">
+                    <ListItemIcon><InfoIcon /></ListItemIcon>
+                    <ListItemText primary="About" onClick={handleNavigation('/about')}/>
                 </ListItem>
             </List>
         </Drawer>
-    );
+    )
 }
 
-export default AppNavigation;
+export default AppNavigation
