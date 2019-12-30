@@ -12,8 +12,6 @@ import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet'
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
 import ShowChartIcon from '@material-ui/icons/ShowChart'
 
-import { push } from 'connected-react-router'
-
 const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
@@ -50,9 +48,9 @@ const AppNavigation = ({ handleNavigation}) => {
             >
             <div className={classes.toolbar} />
             <List>
-                <ListItem button key="Transactions">
+                <ListItem button key="Transactions" onClick={handleNavigation('/home')}>
                     <ListItemIcon><AccountBalanceWalletIcon /></ListItemIcon>
-                    <ListItemText primary="Transactions" onClick={handleNavigation('/home')}/>
+                    <ListItemText primary="Transactions"/>
                 </ListItem>
                 <ListItem button key="Report">
                     <ListItemIcon><ShowChartIcon /></ListItemIcon>
@@ -67,9 +65,9 @@ const AppNavigation = ({ handleNavigation}) => {
             <Divider />
 
             <List>
-                <ListItem button key="About">
+                <ListItem button key="About" onClick={handleNavigation('/about')}>
                     <ListItemIcon><InfoIcon /></ListItemIcon>
-                    <ListItemText primary="About" onClick={handleNavigation('/about')}/>
+                    <ListItemText primary="About"/>
                 </ListItem>
             </List>
         </Drawer>
