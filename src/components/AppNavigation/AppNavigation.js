@@ -52,13 +52,17 @@ const AppNavigation = ({ handleNavigation}) => {
                     <ListItemIcon><AccountBalanceWalletIcon /></ListItemIcon>
                     <ListItemText primary="Transactions"/>
                 </ListItem>
-                <ListItem button key="Report">
+                {/*<ListItem button key="Report">
                     <ListItemIcon><ShowChartIcon /></ListItemIcon>
                     <ListItemText primary="Report" />
-                </ListItem>
+                  </ListItem>*/}
                 <ListItem button key="Budget">
                     <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
                     <ListItemText primary="Budget" />
+                </ListItem>
+                <ListItem button key="Wallets" onClick={handleNavigation('/wallets')}>
+                    <ListItemIcon><AccountBalanceWalletIcon /></ListItemIcon>
+                    <ListItemText primary="Wallets" />
                 </ListItem>
             </List>
             

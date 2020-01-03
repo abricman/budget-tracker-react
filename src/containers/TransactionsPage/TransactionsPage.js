@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, handleGetCategories, handleGetWallets, isRequesting, transactionsModel, wallets, categories }) => {
+const TransactionsPage = ({ handleTransactionAdd, handleGetTransactions, handleGetCategories, handleGetWallets, isRequesting, transactionsModel, wallets, categories }) => {
     const classes = useStyles()
     const [openAddDialog, setOpenAddDialog] = useState(false)
     const [currentDate, setCurrentDate] = useState(new moment())
@@ -35,11 +35,6 @@ const AppTransactions = ({ handleTransactionAdd, handleGetTransactions, handleGe
         handleGetCategories()
         handleGetWallets()
     }, [])
-    // TODO
-    // 1. Load all transactions, categories, and wallets => dispatch actions alltogether
-    // 2. Implement spinner while loading
-    // 3. If error show some toast (existing toast component)
-    // 4. Handle redux action errors
 
     const handleSubmit = async (values, formikBag) => {
         handleTransactionAdd(values).then(addResult => {
@@ -112,4 +107,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppTransactions)
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionsPage)

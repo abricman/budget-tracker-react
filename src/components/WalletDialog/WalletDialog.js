@@ -1,4 +1,5 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
@@ -7,15 +8,12 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import { Formik } from "formik"
 import * as Yup from 'yup'
 
-import { makeStyles } from '@material-ui/core/styles'
-
-import TransactionAddForm from '../TransactionAddForm'
+import WalletEditForm from '../WalletEditForm'
 
 const validationSchema = Yup.object().shape({
-    wallet: Yup.string().required('Wallet is required'),
-    category: Yup.string().required('Category is required'),
-    date: Yup.date().nullable().default(null).required('Date is required'),
-    amount: Yup.number().positive('You must enter a positive number').required('Amount is required')
+    name: Yup.string().required('Wallet name is required'),
+    currency: Yup.string().required('Currency is required'),
+    balance: Yup.number().default(0).required('Balance is required'),
 })
 
 const useStyles = makeStyles(theme => ({
@@ -32,18 +30,18 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function TransactionAddDialog({ open, setOpen, handleSubmit, categories, wallets }) {
+export default function WalletDialog({ open, setOpen, handleSubmit, initialValues, title, currencies }) {
   const classes = useStyles()
   const handleClose = () => setOpen(false)
 
   return (
-    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+    <Dialog open={open} onClose={handleClose} aria-labelledby="wallet-add-dialog-title">
       <Formik 
           render={props => (
             <form className={classes.form} noValidate onSubmit={props.handleSubmit}>
-                <DialogTitle id="form-dialog-title">New transaction</DialogTitle>
+                <DialogTitle id="wallet-add-dialog-title">{title}</DialogTitle>
                 <DialogContent>
-                    <TransactionAddForm {...props} categories={categories} wallets={wallets} />     
+                    <WalletEditForm {...props} currencies={currencies} />     
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
@@ -54,8 +52,8 @@ export default function TransactionAddDialog({ open, setOpen, handleSubmit, cate
                     </Button>
                 </DialogActions>
               </form>
-          )} 
-          initialValues={{date:new Date()}}
+          )}
+          initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
       />

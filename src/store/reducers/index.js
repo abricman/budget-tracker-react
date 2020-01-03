@@ -6,6 +6,7 @@ import requestingReducer from './requesting.reducer'
 import errorReducer from './error.reducer'
 import categoriesReducer from './categories.reducer'
 import walletsReducer from './wallets.reducer'
+import currenciesReducer from './currencies.reducer'
 
 const createRootReducer = (history) => combineReducers({
     router: connectRouter(history),
@@ -14,7 +15,8 @@ const createRootReducer = (history) => combineReducers({
     requesting: requestingReducer,
     error: errorReducer,
     categories: categoriesReducer,
-    wallets: walletsReducer
+    wallets: walletsReducer,
+    currencies: currenciesReducer
 })
 
 export default createRootReducer

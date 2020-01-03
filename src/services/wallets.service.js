@@ -15,5 +15,37 @@ export const getWallets = async () => {
             resolve({ error: true, errorMessage: res.response.data })
         })
     })
-    // TODO: Abstract the promise construct
+}
+
+export const walletAdd = async (wallet) => {
+    return new Promise((resolve, reject) => {
+        walletsClient.post('/', wallet).then(res => {
+            resolve(res.data)
+        }).catch(res => {
+            console.log(res)
+            resolve({ error: true, errorMessage: res.response.data })
+        })
+    })
+}
+
+export const walletUpdate = async (wallet) => {
+    return new Promise((resolve, reject) => {
+        walletsClient.patch(`/${wallet._id}`, wallet).then(res => {
+            resolve(res.data)
+        }).catch(res => {
+            console.log(res)
+            resolve({ error: true, errorMessage: res.response.data })
+        })
+    })
+}
+
+export const walletDelete = async (walletId) => {
+    return new Promise((resolve, reject) => {
+        walletsClient.delete(`/${walletId}`).then(res => {
+            resolve(res.data)
+        }).catch(res => {
+            console.log(res)
+            resolve({ error: true, errorMessage: res.response.data })
+        })
+    })
 }

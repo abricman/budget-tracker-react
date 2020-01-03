@@ -1,17 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
-import CategoryIcon from '@material-ui/icons/Category';
-import { Typography } from '@material-ui/core';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+import Drawer from '@material-ui/core/Drawer'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import { Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   list: {
@@ -20,18 +13,18 @@ const useStyles = makeStyles(theme => ({
   section1: {
     margin: theme.spacing(3, 2)
   }
-}));
+}))
 
 export default function TemporaryDrawer({open, updateOpenState, handleSignOut}) {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const toggleDrawer = (open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+      return
     }
 
-    updateOpenState(open);
-  };
+    updateOpenState(open)
+  }
 
   const sideList = () => (
     <div
@@ -60,19 +53,8 @@ export default function TemporaryDrawer({open, updateOpenState, handleSignOut}) 
           </Grid>
         </Grid>
       </div>
-      <Divider />
-      <List>
-        <ListItem button key="My Wallets">
-          <ListItemIcon><AccountBalanceWalletIcon /></ListItemIcon>
-          <ListItemText primary="My Wallets" />
-        </ListItem>
-        {/* <ListItem button key="Categories">
-          <ListItemIcon><CategoryIcon /></ListItemIcon>
-          <ListItemText primary="Categories"/>
-        </ListItem> */}
-      </List>
     </div>
-  );
+  )
 
   return (
     <div>
@@ -80,5 +62,5 @@ export default function TemporaryDrawer({open, updateOpenState, handleSignOut}) 
         {sideList()}
       </Drawer>
     </div>
-  );
+  )
 }

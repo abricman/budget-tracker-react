@@ -7,8 +7,9 @@ import LandingPage from  '../../components/LandingPage'
 import SignUpPage from  '../SignUpPage'
 import SignInPage from  '../SignInPage'
 import PageNotFound from  '../../components/PageNotFound'
-import AppTransactions from '../AppTransactions'
+import TransactionsPage from '../TransactionsPage'
 import AboutPage from '../../components/AboutPage'
+import WalletsPage from '../../containers/WalletsPage'
 import FontAwesomeIconLibrary from '../../lib/FontAwesomeIconLibrary'
 
 function App({history, context}) {
@@ -19,8 +20,9 @@ function App({history, context}) {
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/user/signup' component={SignUpPage} />
           <Route exact path='/user/signin' component={SignInPage} />
-          <Route exact path='/home' component={AppTransactions} />
+          <Route exact path='/home' component={TransactionsPage} />
           <Route exact path='/about' component={AboutPage} />
+          <Route exact path='/wallets' component={WalletsPage} />
           <Route component={PageNotFound} />  
         </Switch>
       </ConnectedRouter>

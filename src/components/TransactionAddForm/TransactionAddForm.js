@@ -8,8 +8,9 @@ import { Field } from 'formik'
 
 import DatePickerField from '../DatePickerField'
 import SelectField from '../SelectField'
+import { getPicklistOptions } from '../../lib/Helpers'
 
-export default function AddTransactionForm(props) {
+export default function TransactionAddForm(props) {
 
   const {
     values : { amount, note },
@@ -22,21 +23,15 @@ export default function AddTransactionForm(props) {
     wallets
   } = props
 
-  const getPicklistOptions = (records) => {
-    return records ? records.map((rec) => { 
-      return { name: rec.name, value: rec._id } 
-    }) : []
-  } 
-
   return (
     <>
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <Field name="wallet" label="Wallet" id="wallet" options={getPicklistOptions(wallets)} required component={SelectField} error={Boolean(errors.wallet)} helperText={errors.wallet}/>
+            <Field name="wallet" label="Wallet" id="wallet" options={getPicklistOptions(wallets, 'name', '_id')} required component={SelectField} error={Boolean(errors.wallet)} helperText={errors.wallet}/>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Field name="category" label="Category" id="category" options={getPicklistOptions(categories)} required component={SelectField} />
+            <Field name="category" label="Category" id="category" options={getPicklistOptions(categories, 'name', '_id')} required component={SelectField} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Field name="date" label="Date" inputVariant="outlined" required component={DatePickerField} />
